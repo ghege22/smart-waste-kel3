@@ -1,0 +1,19 @@
+# Data Processing & Math
+numpy>=1.23.5
+pandas>=1.5.3
+
+# Deep Learning Framework
+tensorflow>=2.12.0
+
+# Machine Learning Metrics & Evaluation
+scikit-learn>=1.2.2
+
+# Data Fetching & Kaggle API
+kagglehub>=0.2.0
+
+# Visualization
+matplotlib>=3.7.1
+seaborn>=0.12.2
+
+# Web Deployment Framework
+streamlit>=1.22.0
