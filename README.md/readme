@@ -1,0 +1,89 @@
+# ♻️ Smart Waste Classifier - Kelompok 3
+
+Aplikasi berbasis *Deep Learning* dan *Computer Vision* yang dirancang untuk melakukan klasifikasi sampah secara otomatis ke dalam kategori **Organik (Organic)** dan **Anorganik (Recyclable)** menggunakan arsitektur **MobileNetV2**. Proyek ini diselesaikan sepenuhnya pada Minggu ke-4 sebagai pemenuhan luaran praktikum mata kuliah *Machine Learning*.
+
+Link Aplikasi: [Smart Waste Management Deployment](https://gnx.streamlit.app)
+
+---
+
+## 👥 Anggota Tim & Peran
+* **Muhammad Fauzi Adzim (2310614022)** — *Data Engineer & Pipeline Integrator*
+* **Fadillah Afillasaens (2310614017)** — *Model Developer & Architect*
+* **Ghevira Shaina Az-Zahra (2310614006)** — *Model Evaluator & Documenter*
+
+---
+
+## 📝 Deskripsi Proyek
+Proyek *Smart Waste Classifier* ini dikembangkan untuk memecahkan masalah pencampuran sampah domestik langsung dari sumbernya (hulu). Dengan memanfaatkan *Transfer Learning* dari model pra-latih MobileNetV2, sistem ini mampu mengekstraksi fitur visual dari objek sampah secara cepat dan efisien. Model akhir dikemas ke dalam bentuk aplikasi web interaktif yang siap menerima input gambar lokal maupun tangkapan kamera secara langsung (*real-time*), menjadikannya sangat ideal untuk diintegrasikan pada perangkat tempat sampah pintar (*Smart Bin*) berbasis IoT di masa mendatang.
+
+---
+
+## 📊 Hasil Performa Model (Week 4 Evaluation)
+Model akhir bernama `model_final.h5` dievaluasi secara ketat menggunakan data uji murni dari dataset asli sebanyak **4.512 gambar** (2.513 Organik dan 1.999 Recyclable). Hasil performa global dan spesifik dicatat pada tabel berikut:
+
+### 1. Kinerja Global & Laporan Klasifikasi
+| Kategori Evaluasi | Precision (Presisi) | Recall (Sensitivitas) | F1-Score | Support (Jumlah Data) |
+| :--- | :---: | :---: | :---: | :---: |
+| **Kelas O (Organic)** | 93.93% | 94.75% | 0.9433 | 2.513 |
+| **Kelas R (Recyclable)** | 93.32% | 92.30% | 0.9281 | 1.999 |
+| *Macro Average* | 93.62% | 93.52% | 0.9357 | 4.512 |
+| *Weighted Average* | 93.66% | 93.66% | 0.9366 | 4.512 |
+| **GLOBAL TEST ACCURACY** | **—** | **—** | **93.66%** | **4.512** |
+| **FINAL EVALUATION LOSS** | **—** | **—** | **0.1742** | **—** |
+
+### 2. Sebaran Prediksi (Confusion Matrix)
+* **True Organic:** 2.381 citra sampah organik berhasil ditebak dengan benar.
+* **True Recyclable:** 1.845 citra sampah anorganik berhasil ditebak dengan benar.
+* **False Recyclable:** 132 citra organik salah diklasifikasikan sebagai recyclable.
+* **False Organic:** 154 citra recyclable salah diklasifikasikan sebagai organik.
+
+---
+
+## 📁 Struktur Folder Repositori
+smart-waste-ml/
+├── data/             # Informasi dataset (Link menuju Google Drive dataset asli)
+├── notebooks/        # Jupyter Notebooks (.ipynb) eksperimen EDA & Training Model
+├── models/           # Berkas model terlatih final (model_final.h5)
+├── app/              # Berkas kode program antarmuka web aplikasi (Streamlit)
+├── reports/          # Dokumen administratif (Laporan Akhir PDF & Slide PPT)
+├── requirements.txt  # Daftar pustaka / dependensi library Python yang digunakan
+└── README.md         # Dokumentasi utama proyek dan identitas tim
+
+---
+
+## ⚙️ Cara Instalasi dan Menjalankan Aplikasi
+
+Ikuti panduan langkah demi langkah berikut untuk memasang dan menjalankan aplikasi web *Smart Waste Classifier* di lingkungan lokal komputer Anda:
+
+### Prasyarat (*Prerequisites*)
+* Pastikan komputer Anda sudah terpasang **Python** (Direkomendasikan versi `3.9`, `3.10`, atau `3.11`).
+* Pastikan koneksi internet aktif untuk mengunduh pustaka dependensi.
+
+### Langkah 1: Kloning Repositori Git
+Buka Terminal (Linux/macOS) atau Command Prompt/PowerShell (Windows), kemudian unduh repositori ini dengan perintah:
+git clone https://github.com/ghege22/trash-image-procesing.git
+cd trash-image-procesing
+
+### Langkah 2: Membuat Virtual Environment (Opsional, Sangat Disarankan)
+Untuk menghindari konflik versi antar library di komputer Anda, buatlah lingkungan terisolasi baru:
+
+* **Windows:**
+python -m venv venv
+venv\Scripts\activate
+
+* **Linux / macOS:**
+python3 -m venv venv
+source venv/bin/activate
+
+### Langkah 3: Instalasi Dependensi Library
+Lakukan pembaruan komponen `pip` dan pasang seluruh pustaka wajib (TensorFlow, Pandas, Scikit-Learn, Streamlit, dll.) yang terdaftar di dalam `requirements.txt`:
+pip install --upgrade pip
+pip install -r requirements.txt
+
+### Langkah 4: Menjalankan Aplikasi Web
+Setelah proses instalasi selesai tanpa kendala, jalankan server aplikasi lokal Streamlit menggunakan perintah berikut:
+streamlit run app/app.py
+
+### Langkah 5: Mengakses Aplikasi via Browser
+Setelah perintah di atas dieksekusi, sistem akan memicu browser internet Anda secara otomatis. Jika tidak terbuka otomatis, salin dan buka alamat tautan berikut secara manual pada browser Anda:
+http://localhost:8501
